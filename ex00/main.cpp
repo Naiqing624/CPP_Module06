@@ -15,7 +15,10 @@
 int	main(int argc, char **argv)
 {
 	if (argc != 2)
-		std::cout << "Please enter the thing you want to convert.\n Ex: ./programe [InputToConvert]";
+	{
+		std::cout << "Please enter the thing you want to convert.\n Ex: ./programe [InputToConvert]" << std::endl;
+		return (1);
+	}
 	ScalarConverter::convert(argv[1]);
 	return 0;
 }

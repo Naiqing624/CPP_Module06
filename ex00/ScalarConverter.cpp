@@ -14,6 +14,21 @@
 #include <cstdlib>
 #include <iomanip>
 
+ScalarConverter::ScalarConverter() {}
+
+ScalarConverter::~ScalarConverter() {}
+
+ScalarConverter::ScalarConverter(const ScalarConverter &other) 
+{
+	*this = other;
+}
+
+ScalarConverter &ScalarConverter::operator=(const ScalarConverter &other)
+{
+	(void)other;
+	return (*this);
+}
+
 bool	isAllDigital(const std::string &input) 
 {
 	for (size_t i = 0; i < input.length(); i++)
@@ -63,7 +78,7 @@ void	convertInt(const std::string &input)
 {
 	int value = std::atoi(input.c_str());
 	if (value < 32 || value > 126)
-		std::cout << "Char: '" << "Non displayable" << "'" << std::endl;
+		std::cout << "Char: " << "Non displayable" << std::endl;
 	else
 		std::cout << "Char: '*'" << std::endl;
 	std::cout << "Int: " << value << std::endl;
@@ -76,7 +91,7 @@ void	convertFloat(const std::string &input)
 {
 	float value = std::atof(input.c_str());
 	if (value < 32 || value > 126)
-		std::cout << "Char: '" << "Non displayable" << "'" << std::endl;
+		std::cout << "Char: " << "Non displayable" << std::endl;
 	else
 		std::cout << "Char: '*'" << std::endl;
 	std::cout << "Int: " << static_cast<int>(value) << std::endl;
@@ -89,7 +104,7 @@ void	convertDouble(const std::string &input)
 {
 	double value = std::atof(input.c_str());
 	if (value < 32 || value > 126)
-		std::cout << "Char: '" << "Non displayable" << "'" << std::endl;
+		std::cout << "Char: " << "Non displayable" << std::endl;
 	else
 		std::cout << "Char: '*'" << std::endl;
 	std::cout << "Int: " << static_cast<int>(value) << std::endl;
@@ -120,26 +135,26 @@ void	ScalarConverter::convert(const std::string &input)
 	ScalarType resultType = detectType(input);
 	switch (resultType)
 	{
-	case TYPE_CHAR:
-		convertChar(input);
-		break;
-	case TYPE_INT:
-		convertInt(input);
-		break;
-	case TYPE_FLOAT:
-		convertFloat(input);
-		break;
-	case TYPE_DOUBLE:
-		convertDouble(input);
-		break;
-	case TYPE_SPECIALFLOAT:
-		convertSpecialFloat(input);
-		break;
-	case TYPE_SPECIALDOUBLE:
-		convertSpecialDouble(input);
-		break;
-	
-	default:
-		break;
+		case TYPE_CHAR:
+			convertChar(input);
+			break;
+		case TYPE_INT:
+			convertInt(input);
+			break;
+		case TYPE_FLOAT:
+			convertFloat(input);
+			break;
+		case TYPE_DOUBLE:
+			convertDouble(input);
+			break;
+		case TYPE_SPECIALFLOAT:
+			convertSpecialFloat(input);
+			break;
+		case TYPE_SPECIALDOUBLE:
+			convertSpecialDouble(input);
+			break;
+		
+		default:
+			break;
 	}
 }

@@ -21,6 +21,9 @@ class Serialize
 {
 	private:
 		Serialize();
+		~Serialize();
+		Serialize(const Serialize &other);
+		Serialize &operator=(const Serialize &other);
 
 	public:
 		static uintptr_t	serialize(Data *ptr);
